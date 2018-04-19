@@ -2,10 +2,10 @@
   <div class="list">
       <div class="top">
         <div class="image">
-          <img :src="main.img" alt="">
+          <img :src="this.$route.params.list_inner_img" alt="">
         </div>
         <div class="filter">
-          <img :src="main.img" alt="">
+          <img :src="this.$route.params.list_inner_img" alt="">
         </div>
         <div class="des">
             <h2>{{main.word}}</h2>
@@ -13,17 +13,15 @@
         </div>
       </div>
       <div class="other">
-
-      
         <div class="unit" v-for="(item,index) in itemList" v-bind:key="index">
-          <router-link :to="{path:'/play',query: {id:item.id}}">
+          <router-link :to="{path:'/play',query: {ids:item.ids}}">
             <div class="left">
-              <img src="../assets/img/L1.png" alt="">
+              <img :src="item.item_img" alt="">
             </div>
             <div class="right">
-              <div class="f14">{{item.name}}</div>
-              <p class="mt55">1028/01/30</p>
-              <p>主讲人: 东 优妃</p>
+              <div class="f14">{{item.item_text}}</div>
+              <p class="mt55">{{item.item_time}}</p>
+              <p>主讲人: {{item.item_author}}</p>
             </div>
           </router-link>
         </div>
@@ -37,7 +35,6 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       itemList : [],
       main:{
         img:"",
@@ -47,20 +44,16 @@ export default {
     }
   },
   created() {
-    console.log('1');
+
   },
-  mounted:function () {
-    axios.get("http://localhost:8080/static/test.json",{
-      params: {
-        id: 1,
-      }
-    }).then(response => {
-        // console.log(response)
-        this.itemList = response.data.item;
-        this.main = response.data.main;
-        // console.log(this.itemList)
-    });
-  }
+
+    mounted:function () {
+      axios.get(`http://yuki.llwell.net/api/vlist/item/${this.$route.params.ids}/false`).then(response => {
+          response.data.forEach((item)=>{
+            this.itemList.push(item);
+          })
+      });
+    },
 }
 </script>
 

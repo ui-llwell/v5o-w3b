@@ -2,36 +2,30 @@
   <div class="play">
     <div class="top">
       <div class="video">
-        <img src="../assets/img/P1.png" alt="">
+        <div class="prism-player" id="J_prismPlayer"></div>
       </div>
     </div>
     <div class="bottom">
       <div class="describe">
-          <div class="title">{{word}}</div>
-          <div class="content">
-            Nutricia Aptamil 金装爱他美澳洲畅销奶粉品牌，来自新西兰纯净奶源，原料天然，无蔗糖，无香精，口感清淡，宝贝喜爱。特添加益生元组合，有助于改善肠道环境，为宝宝的健康成长提供科学的支持。
-          </div>
-          <div class="time">
-            {{id}}
-          </div>
+          <div class="title">{{title}}</div>
+          <div class="content">{{content}}</div>
+          <div class="time">{{time}}</div>
         </div>
       <div class="list-item">
         <ul class="clearfix">
           <li v-for="(item,index) in playItemList" v-bind:key="index">
             <div class="img">
-              <a href="">
-                <img class="lazy" src="../assets/img/L2.png" />
+              <a :href="item.goods_url">
+                <img class="lazy" :src="item.goods_img" />
               </a>
             </div>
             <div class="txt">
-              <h3>{{item.name}}</h3>
+              <h3>{{item.goods_text}}</h3>
               <div class="price">
-                <span>{{item.time}}</span>
+                <span>{{item.goods_price}}</span>
               </div>
             </div>
-
           </li>
-
         </ul>
       </div>
     </div>
@@ -51,31 +45,107 @@
     data() {
       return {
         id: "",
-        word: "ppppp",
+        time: "",
+        content: "",
+        title: "",
+        video:'',
         playItemList:[]
       }
     },
     created() {
-      this.id = this.$route.query.id;
+      // this.id = this.$route.query.id;
     },
-    mounted: function() {
-      axios.get("http://localhost:8080/static/test.json", {
-        params: {
-          id: this.id,
-        }
-      }).then(response => {
-        console.log(response.data.play)
+    mounted:function () {
+      axios.get(`http://yuki.llwell.net/api/vlist/video/${this.$route.query.ids}/true`).then(response => {
+          console.log(response)
+          response.data.goods.forEach((item)=>{
+            this.playItemList.push(item);
+          })
+          this.title = response.data.video_title;
+          this.content = response.data.video_text;
+          this.time = response.data.video_time;
+          this.video=response.data.video_url;
+          console.log(this.video)
 
-        // this.itemList = response.data.item;
-        this.word = response.data.play.playcon;
-        // this.playItemList = response.data.playItem;
-        // console.log(this.playItemList)
-        response.data.playItem.forEach((item)=>{
-          this.playItemList.push(item);
-        })
+
+
+          var player = new Aliplayer({
+        id: "J_prismPlayer",
+        autoplay: false,
+        isLive: false,
+        playsinline: true,
+        width: "100%",
+        height: "400px",
+        controlBarVisibility: "always",
+        useH5Prism: true,
+        useFlashPrism: false,
+        source: this.video,
+        cover: "",
+        skinLayout: [{
+            "name": "bigPlayButton",
+            "align": "blabs",
+            "x": 30,
+            "y": 80
+          },
+          {
+            "name": "controlBar",
+            "align": "blabs",
+            "x": 0,
+            "y": 0,
+            "children": [{
+                "name": "progress",
+                "align": "blabs",
+                "x": 0,
+                "y": 44
+              },
+              {
+                "name": "fullScreenButton",
+                "align": "tr",
+                "x": 10,
+                "y": 10
+              },
+              {
+                "name": "snapshot",
+                "align": "tr",
+                "x": 10,
+                "y": 10
+              }
+            ]
+          },
+          {
+            "name": "fullControlBar",
+            "align": "tlabs",
+            "x": 0,
+            "y": 0,
+            "children": [{
+                "name": "fullTitle",
+                "align": "tl",
+                "x": 25,
+                "y": 6
+              },
+              {
+                "name": "fullNormalScreenButton",
+                "align": "tr",
+                "x": 24,
+                "y": 13
+              },
+              {
+                "name": "fullZoom",
+                "align": "cc"
+              }
+            ]
+          }
+        ]
+      }, function(player) {
+        console.log("播放器创建了。");
       });
-    }
+      });
+
+        console.log(this.video)
+
+    },
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -87,7 +157,7 @@
       text-align: center;
       .video {
         width: 100%;
-        img {
+        &>div {
           width: 100%;
           max-height: 180px;
         }

@@ -12,9 +12,9 @@ export default new Router({
       name: 'home',
       component: Home
     },{
-      path: '/list/:id',
+      path: '/list',
       name: 'list',
-      component: List
+      component: List,
     },{
       path: '/play',
       name: 'play',
