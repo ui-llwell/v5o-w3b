@@ -8,8 +8,8 @@
           <img :src="this.$route.query.list_inner_img" alt="">
         </div>
         <div class="des">
-            <h2>{{main.word}}</h2>
-            <p>{{main.text}}</p>
+            <h2>{{this.$route.query.list_text_p}}</h2>
+            <p>{{this.$route.query.list_text_s}}</p>
         </div>
       </div>
       <div class="other">

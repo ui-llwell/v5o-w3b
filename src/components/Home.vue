@@ -20,7 +20,7 @@
       <div class="list" >
 
         <div class="unit" v-for="(item,index) in unitList" >
-          <router-link :to="{path:'/List',query: {ids:item.ids,list_inner_img:item.list_inner_img}}">
+          <router-link :to="{path:'/List',query: {ids:item.ids,list_inner_img:item.list_inner_img,list_text_s:item.list_text_s,list_text_p:item.list_text_p}}">
           <div class="top">
             <img :src="item.list_img" alt="">
           </div>
