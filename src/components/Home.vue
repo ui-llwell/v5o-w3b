@@ -1,5 +1,5 @@
 <template>
-    
+
 
      <!--  <router-link to="/list/1">Go to list1</router-link><br>
       <router-link to="/list/2">Go to list2</router-link><br> -->
@@ -19,7 +19,8 @@
       </div>
       <div class="list" >
 
-        <div class="unit" v-for="(item,index) in unitList" @click="listClick(item.ids,item.list_inner_img)">
+        <div class="unit" v-for="(item,index) in unitList" >
+          <router-link :to="{path:'/List',query: {ids:item.ids,list_inner_img:item.list_inner_img}}">
           <div class="top">
             <img :src="item.list_img" alt="">
           </div>
@@ -27,6 +28,7 @@
             <h3>{{item.list_text_p}}</h3>
             <div class="p">{{item.list_text_s}}</div>
           </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -81,7 +83,7 @@ import axios from 'axios'
           height:100%;
         }
       }
-      
+
     }
     .other{
       margin: 0 7px;

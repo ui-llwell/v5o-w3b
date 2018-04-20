@@ -2,10 +2,10 @@
   <div class="list">
       <div class="top">
         <div class="image">
-          <img :src="this.$route.params.list_inner_img" alt="">
+          <img :src="this.$route.query.list_inner_img" alt="">
         </div>
         <div class="filter">
-          <img :src="this.$route.params.list_inner_img" alt="">
+          <img :src="this.$route.query.list_inner_img" alt="">
         </div>
         <div class="des">
             <h2>{{main.word}}</h2>
@@ -48,7 +48,7 @@ export default {
   },
 
     mounted:function () {
-      axios.get(`http://yuki.llwell.net/api/vlist/item/${this.$route.params.ids}/false`).then(response => {
+      axios.get(`http://yuki.llwell.net/api/vlist/item/${this.$route.query.ids}/false`).then(response => {
           response.data.forEach((item)=>{
             this.itemList.push(item);
           })
