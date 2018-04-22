@@ -76,7 +76,7 @@
         playsinline: true,
         width: "100%",
         height: "400px",
-        controlBarVisibility: "always",
+        controlBarVisibility: "click",
         useH5Prism: true,
         useFlashPrism: false,
         source: this.video,
@@ -137,11 +137,11 @@
           }
         ]
       }, function(player) {
-        console.log("播放器创建了。");
+        // console.log("播放器创建了。");
       });
       });
 
-        console.log(this.video)
+        // console.log(this.video)
 
     },
   }
@@ -236,6 +236,6 @@
       }
     }
   }
-  
-  
+
+
 </style>
