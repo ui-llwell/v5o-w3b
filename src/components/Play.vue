@@ -138,7 +138,7 @@
         // ]
             skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
               {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[
-                  {"name":"fullScreenButton","align":"tr","x":10,"y":10},
+                  // {"name":"fullScreenButton","align":"tr","x":10,"y":10},
                   {"name":"playButton","align":"tl","x":15,"y":12},
                   {"name":"progress","align":"blabs","x":0,"y":44},
                   {"name":"setButton","align":"tr","x":20,"y":25}]}]
