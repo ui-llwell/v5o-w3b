@@ -75,67 +75,73 @@
         isLive: false,
         playsinline: true,
         width: "100%",
-        height: "400px",
+        height: "200px",
         controlBarVisibility: "click",
         useH5Prism: true,
         useFlashPrism: false,
         source: this.video,
         cover: "",
-        skinLayout: [{
-            "name": "bigPlayButton",
-            "align": "blabs",
-            "x": 30,
-            "y": 80
-          },
-          {
-            "name": "controlBar",
-            "align": "blabs",
-            "x": 0,
-            "y": 0,
-            "children": [{
-                "name": "progress",
-                "align": "blabs",
-                "x": 0,
-                "y": 44
-              },
-              {
-                "name": "fullScreenButton",
-                "align": "tr",
-                "x": 10,
-                "y": 10
-              },
-              {
-                "name": "snapshot",
-                "align": "tr",
-                "x": 10,
-                "y": 10
-              }
-            ]
-          },
-          {
-            "name": "fullControlBar",
-            "align": "tlabs",
-            "x": 0,
-            "y": 0,
-            "children": [{
-                "name": "fullTitle",
-                "align": "tl",
-                "x": 25,
-                "y": 6
-              },
-              {
-                "name": "fullNormalScreenButton",
-                "align": "tr",
-                "x": 24,
-                "y": 13
-              },
-              {
-                "name": "fullZoom",
-                "align": "cc"
-              }
-            ]
-          }
-        ]
+        // skinLayout: [{
+        //     "name": "bigPlayButton",
+        //     "align": "blabs",
+        //     "x": 30,
+        //     "y": 80
+        //   },
+        //   {
+        //     "name": "controlBar",
+        //     "align": "blabs",
+        //     "x": 0,
+        //     "y": 0,
+        //     "children": [{
+        //         "name": "progress",
+        //         "align": "blabs",
+        //         "x": 0,
+        //         "y": 44
+        //       },
+        //       {
+        //         "name": "fullScreenButton",
+        //         "align": "tr",
+        //         "x": 10,
+        //         "y": 10
+        //       },
+        //       {
+        //         "name": "snapshot",
+        //         "align": "tr",
+        //         "x": 10,
+        //         "y": 10
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     "name": "fullControlBar",
+        //     "align": "tlabs",
+        //     "x": 0,
+        //     "y": 0,
+        //     "children": [{
+        //         "name": "fullTitle",
+        //         "align": "tl",
+        //         "x": 25,
+        //         "y": 6
+        //       },
+        //       {
+        //         "name": "fullNormalScreenButton",
+        //         "align": "tr",
+        //         "x": 24,
+        //         "y": 13
+        //       },
+        //       {
+        //         "name": "fullZoom",
+        //         "align": "cc"
+        //       }
+        //     ]
+        //   }
+        // ]
+            skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
+              {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[
+                  {"name":"fullScreenButton","align":"tr","x":10,"y":10},
+                  {"name":"playButton","align":"tl","x":15,"y":12},
+                  {"name":"progress","align":"blabs","x":0,"y":44},
+                  {"name":"setButton","align":"tr","x":20,"y":25}]}]
       }, function(player) {
         // console.log("播放器创建了。");
       });
