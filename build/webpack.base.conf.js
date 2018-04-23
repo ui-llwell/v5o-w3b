@@ -11,6 +11,9 @@ function resolve (dir) {
 
 
 module.exports = {
+  externals: {
+    "prismplayer": "prismplayer"
+  },
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'

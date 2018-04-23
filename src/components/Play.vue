@@ -145,6 +145,18 @@
       }, function(player) {
         // console.log("播放器创建了。");
       });
+        var setLayout = function()
+        {
+          //设置播放器容器的高度
+          var height ; //根据实际情况设置高度
+          player.el().style.height = height;
+        }
+        window.onresize = function(){
+          setLayout();
+        }
+        player.on("requestFullScreen", function(){
+          setLayout();
+        });
       });
 
         // console.log(this.video)
