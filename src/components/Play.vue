@@ -163,6 +163,7 @@
       text-align: center;
       .video {
         width: 100%;
+        height: 200px;
         &>div {
           width: 100%;
           max-height: 180px;
